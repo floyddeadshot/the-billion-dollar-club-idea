@@ -1,7 +1,6 @@
 //@ts-nocheck
-import { HardhatUserConfig } from "hardhat/config";
-import "@typechain/hardhat";
-import "@nomiclabs/hardhat-ethers";
+require("@typechain/hardhat");
+require("@nomiclabs/hardhat-ethers");
 
 require("dotenv").config();
 //require("@openzeppelin/hardhat-upgrades");
