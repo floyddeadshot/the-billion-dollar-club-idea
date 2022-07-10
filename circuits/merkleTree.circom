@@ -36,7 +36,7 @@ template MerkleTreeChecker(levels) {
 
     component selectors[levels];
     component hashers[levels];
-
+    log(11111111111);
     for (var i = 0; i < levels; i++) {
         selectors[i] = DualMux();
         selectors[i].in[0] <== i == 0 ? leaf : hashers[i - 1].hash;
@@ -47,6 +47,8 @@ template MerkleTreeChecker(levels) {
         hashers[i].left <== selectors[i].out[0];
         hashers[i].right <== selectors[i].out[1];
     }
-
+    log(6969999);
+    log(root);
+    log(hashers[levels - 1].hash);
     root === hashers[levels - 1].hash;
 }

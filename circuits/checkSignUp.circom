@@ -29,23 +29,31 @@ template Withdraw(levels) {
     signal input age;
     signal input pathElements[levels];
     signal input pathIndices[levels];
-    
+    log(root);
+    log(recipient);
+    log(relayer);
+    log(fee);
+    log(refund);
+    log(secret);
+    log(age);
+    log(420);
     component hasher = CommitmentHasher();
     hasher.secret <== secret;
-
+    log(hasher.commitment);
     component tree = MerkleTreeChecker(levels);
     tree.leaf <== hasher.commitment;
     tree.root <== root;
     for (var i = 0; i < levels; i++) {
+        log(pathIndices[i]);
         tree.pathElements[i] <== pathElements[i];
         tree.pathIndices[i] <== pathIndices[i];
     }
-
+    log(69);
     component ageChecker = LessThan(7);
     ageChecker.in[0]<==17;
     ageChecker.in[1]<==age;
     1===ageChecker.out;
-    
+    log(420);
 
     // Add hidden signals to make sure that tampering with recipient or fee will invalidate the snark proof
     // Most likely it is not required, but it's better to stay on the safe side and it only takes 2 constraints
